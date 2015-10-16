@@ -1,0 +1,8 @@
+.deps/
+autom4te.cache/
+*.o
+*.so
+gaburevolver_ctl
+Makefile
+config.log
+config.status

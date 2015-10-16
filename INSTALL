@@ -1,0 +1,30 @@
+Pre-Requirements:
+  - Wiring Pi
+    http://wiringpi.com/
+
+
+Build How To
+
+  1. Run configure
+     $ ./configure --with-wiring-pi=/path/to/wiringpi/headers
+
+  2. Run make
+     $ make
+
+  3. Install
+     $ su -
+     # make install
+
+
+Uninstall How To
+
+  1. Run make
+     $ su -
+     # make uninstall
+
+
+NOTES:
+  ToyHack libraries will be installed to /usr/local/lib by default.
+  However, some Linux Distros does not set /usr/local/lib to library path.
+  You have to check library path and to set LD_LIBRARY_PATH.
+
