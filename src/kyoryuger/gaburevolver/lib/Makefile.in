@@ -208,6 +208,7 @@ PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_URL = @PACKAGE_URL@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
+RANLIB = @RANLIB@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 STRIP = @STRIP@
@@ -256,7 +257,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 libgaburevolver_so_SOURCES = libgaburevolver.c
-libgaburevolver_so_CPPFLAGS = -I@WIRINGPI_DIR@
+libgaburevolver_so_CPPFLAGS = -I@WIRINGPI_DIR@ -I./../../../common
 libgaburevolver_so_CFLAGS = -Wall -fPIC
 libgaburevolver_so_LDFLAGS = -shared -lwiringPi
 all: all-am

@@ -1,7 +1,7 @@
 bin_PROGRAMS = libgaburevolver.so
 
 libgaburevolver_so_SOURCES = libgaburevolver.c
-libgaburevolver_so_CPPFLAGS = -I@WIRINGPI_DIR@
+libgaburevolver_so_CPPFLAGS = -I@WIRINGPI_DIR@ -I./../../../common
 libgaburevolver_so_CFLAGS = -Wall -fPIC
 libgaburevolver_so_LDFLAGS = -shared -lwiringPi
 

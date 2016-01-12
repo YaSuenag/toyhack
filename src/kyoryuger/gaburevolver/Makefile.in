@@ -101,7 +101,7 @@ PROGRAMS = $(bin_PROGRAMS)
 am_gaburevolver_ctl_OBJECTS =  \
 	gaburevolver_ctl-gaburevolver_ctl.$(OBJEXT)
 gaburevolver_ctl_OBJECTS = $(am_gaburevolver_ctl_OBJECTS)
-gaburevolver_ctl_LDADD = $(LDADD)
+gaburevolver_ctl_DEPENDENCIES = ../../common/libtoyhack_common.a
 gaburevolver_ctl_LINK = $(CXXLD) $(gaburevolver_ctl_CXXFLAGS) \
 	$(CXXFLAGS) $(gaburevolver_ctl_LDFLAGS) $(LDFLAGS) -o $@
 AM_V_P = $(am__v_P_@AM_V@)
@@ -251,6 +251,7 @@ PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_URL = @PACKAGE_URL@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
+RANLIB = @RANLIB@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 STRIP = @STRIP@
@@ -301,7 +302,8 @@ top_srcdir = @top_srcdir@
 SUBDIRS = lib
 gaburevolver_ctl_SOURCES = gaburevolver_ctl.cpp
 gaburevolver_ctl_LDFLAGS = -Llib -lgaburevolver
-gaburevolver_ctl_CXXFLAGS = -Wall
+gaburevolver_ctl_LDADD = ../../common/libtoyhack_common.a
+gaburevolver_ctl_CXXFLAGS = -Wall -std=c++11 -I../../common
 all: all-recursive
 
 .SUFFIXES:

@@ -28,7 +28,9 @@ AC_ARG_WITH([wiring-pi], AC_HELP_STRING([--with-wiring-pi@<:@=PATH@:>@],
 
 
 AC_CONFIG_FILES([Makefile
+                 src/common/Makefile
                  src/kyoryuger/Makefile
                  src/kyoryuger/gaburevolver/Makefile
                  src/kyoryuger/gaburevolver/lib/Makefile])
+AC_PROG_RANLIB
 AC_OUTPUT

@@ -1,23 +1,28 @@
 #include <iostream>
 #include <iomanip>
 
+#include <string.h>
+
+#include <console.hpp>
+#include <toyhack.h>
+
 #include "libgaburevolver.h"
 #include "../judenchi.h"
-#include "../../toyhack.h"
 
 
-static void print_help(){
-  std::cout << "Help:" << std::endl;
-  std::cout << "  list - List all Judenchi ID." << std::endl;
-  std::cout << "  open - Open setter." << std::endl;
-  std::cout << "  judenchi <lower id> <upper id> - Set judenchi." << std::endl;
-  std::cout << "  close - Close setter," << std::endl;
-  std::cout << "  rotate - Start rotate switch." << std::endl;
-  std::cout << "  trigger - Trigger on." << std::endl;
-  std::cout << "  minityra [on|off] - Dock/Undock Minityra." << std::endl;
-  std::cout << "  calibur [on|off] - Dock/Undock Gaburicalibur." << std::endl;
-  std::cout << "  exit - Exit from this console." << std::endl;
-}
+TCommandDescription cmd_descriptions[] = {
+                      {"help", "Print help."},
+                      {"list", "List all Judenchi ID."},
+                      {"open", "Open setter,"},
+                      {"judenchi", "Set judenchi <lower id> <upper id>"},
+                      {"close", "Close setter."},
+                      {"rotate", "Start rotate switch."},
+                      {"trigger", "Push trigger switch."},
+                      {"minityra", "Dock minityra <on|off>"},
+                      {"calibur", "Dock gaburicalibur <on|off>"},
+                      {"exit", "Exit from this console."},
+                      {NULL, NULL}
+};
 
 static void print_judenchi_list(){
   std::cout << "List of Judenchi:" << std::endl;
@@ -27,29 +32,6 @@ static void print_judenchi_list(){
                                judenchi_list[Cnt].name << std::endl;
   }
 
-}
-
-static void skip_to_next_input(){
-  /* Ignore another arguments. */
-  while(std::cin.get() != 0x0a){}
-}
-
-static bool read_judenchi_id(int *id){
-  bool parse_result = false;
-
-  if(std::cin.peek() != 0x0a){
-    std::cin >> *id;
-    parse_result = !std::cin.fail();
-    parse_result &= ID_ISIN(*id);
-  }
-
-  if(!parse_result){
-    std::cerr << "You have to set Judenchi ID." << std::endl;
-    std::cin.clear();
-    skip_to_next_input();
-  }
-
-  return parse_result;
 }
 
 static void print_judenchi(const char *label, int id){
@@ -65,131 +47,146 @@ static void print_judenchi(const char *label, int id){
   std::cout << std::endl;
 }
 
-static bool read_onoff(bool *sw){
-  bool result = true;
-  std::string subcommand;
-
-  if(std::cin.peek() != 0x0a){
-    std::cin >> subcommand;
-    result = !std::cin.fail();
-  }
-
-  if(!result){
-    std::cerr << "You have to set on or off." << std::endl;
-    std::cin.clear();
-    skip_to_next_input();
-  }
-  else if(subcommand == "on"){
-    *sw = true;
-  }
-  else if(subcommand == "off"){
-    *sw = false;
-  }
-  else{
-    std::cerr << "Invalid argument." << std::endl;
-    result = false;
-  }
-
-  return result;
-}
-
 int main(int argc, char *argv[]){
 
+#ifndef CONSOLE_TEST
   if(SetupGPIO() != TOYHACK_SUCCEEDED){
     std::cerr << "Could not initialize libgaburevolver." << std::endl;
     return TOYHACK_ERROR;
   }
+#endif
+
+  TConsole console(cmd_descriptions);
 
   std::cout << "Gaburevolver management console" << std::endl;
-  std::cout << "Copyright (C) 2015 Yasumasa Suenaga" << std::endl;
+  std::cout << "Copyright (C) 2015-2016 Yasumasa Suenaga" << std::endl;
   std::cout << std::endl;
 
   while(true){
-    std::cout << "gaburevolver> ";
-    std::string cmd;
-    std::cin >> cmd;
+    const char *cmd = console.GetCommand("gaburevolver> ");
 
-    if(cmd == "help"){
-      print_help();
+    if(strcmp(cmd, "help") == 0){
+      console.PrintHelp();
     }
-    else if(cmd == "list"){
+    else if(strcmp(cmd, "list") == 0){
       print_judenchi_list();
     }
-    else if(cmd == "open"){
+    else if(strcmp(cmd, "open") == 0){
+#ifndef CONSOLE_TEST
       if(OpenSetter() != TOYHACK_SUCCEEDED){
         std::cerr << "Cannot send open command." << std::endl;
       }
+#endif
     }
-    else if(cmd == "judenchi"){
+    else if(strcmp(cmd, "judenchi") == 0){
       int lower = -1;
       int upper = -1;
-      bool parse_result;
 
       /* Read Judenchi ID */
-      if((parse_result = read_judenchi_id(&lower))){
-        parse_result &= read_judenchi_id(&upper);
-      }
+      try{
+        lower = console.GetNextArgAsInt();
+        upper = console.GetNextArgAsInt();
 
-      if(!parse_result){
+        if(!ID_ISIN(lower) || !ID_ISIN(upper)){
+          throw -1;
+        }
+
+      }
+      catch(...){
+        std::cerr << "Invalid Judenchi ID." << std::endl;
         continue;
-      }
-
-      if(SetJudenchi(lower, upper) != TOYHACK_SUCCEEDED){
-        std::cerr << "Cannot set Judenchi." << std::endl;
       }
 
       print_judenchi("lower", lower);
       print_judenchi("upper", upper);
+
+#ifndef CONSOLE_TEST
+      if(SetJudenchi(lower, upper) != TOYHACK_SUCCEEDED){
+        std::cerr << "Cannot set Judenchi." << std::endl;
+      }
+#endif
+
     }
-    else if(cmd == "close"){
+    else if(strcmp(cmd, "close") == 0){
+
+#ifndef CONSOLE_TEST
       if(CloseSetter() != TOYHACK_SUCCEEDED){
         std::cerr << "Cannot send close command." << std::endl;
       }
+#endif
+
     }
-    else if(cmd == "rotate"){
+    else if(strcmp(cmd, "rotate") == 0){
+
+#ifndef CONSOLE_TEST
       if(Rotate() != TOYHACK_SUCCEEDED){
         std::cerr << "Cannot send rotate command." << std::endl;
       }
+#endif
+
     }
-    else if(cmd == "trigger"){
+    else if(strcmp(cmd, "trigger") == 0){
+
+#ifndef CONSOLE_TEST
       if(Trigger() != TOYHACK_SUCCEEDED){
         std::cerr << "Cannot send trigger command." << std::endl;
       }
+#endif
+
     }
-    else if(cmd == "minityra"){
+    else if(strcmp(cmd, "minityra") == 0){
       bool isOn;
 
-      if(read_onoff(&isOn)){
-        if(isOn && (DockMinityra() != TOYHACK_SUCCEEDED)){
-          std::cerr << "Cannot dock to minityra." << std::endl;
-        }
-        else if(!isOn && (UndockMinityra() != TOYHACK_SUCCEEDED)){
-          std::cerr << "Cannot undock from minityra." << std::endl;
-        }
+      try{
+        isOn = console.GetNextArgAsOnOff();
+      }
+      catch(...){
+        std::cerr << "Invalid argument(s)." << std::endl;
+        continue;
       }
 
+#ifdef CONSOLE_TEST
+      std::cout << isOn << std::endl;
+#else
+      if(isOn && (DockMinityra() != TOYHACK_SUCCEEDED)){
+        std::cerr << "Cannot dock to minityra." << std::endl;
+      }
+      else if(!isOn && (UndockMinityra() != TOYHACK_SUCCEEDED)){
+        std::cerr << "Cannot undock from minityra." << std::endl;
+      }
+#endif
+
     }
-    else if(cmd == "calibur"){
+    else if(strcmp(cmd, "calibur") == 0){
       bool isOn;
 
-      if(read_onoff(&isOn)){
-        if(isOn && (DockGaburicalibur() != TOYHACK_SUCCEEDED)){
-          std::cerr << "Cannot dock to Gaburicalibur." << std::endl;
-        }
-        else if(!isOn && (UndockGaburicalibur() != TOYHACK_SUCCEEDED)){
-          std::cerr << "Cannot undock from Gaburicalibur." << std::endl;
-        }
+      try{
+        isOn = console.GetNextArgAsOnOff();
+      }
+      catch(...){
+        std::cerr << "Invalid argument(s)." << std::endl;
+        continue;
       }
 
+#ifdef CONSOLE_TEST
+      std::cout << isOn << std::endl;
+#else
+      if(isOn && (DockGaburicalibur() != TOYHACK_SUCCEEDED)){
+        std::cerr << "Cannot dock to Gaburicalibur." << std::endl;
+      }
+      else if(!isOn && (UndockGaburicalibur() != TOYHACK_SUCCEEDED)){
+        std::cerr << "Cannot undock from Gaburicalibur." << std::endl;
+      }
+#endif
+
     }
-    else if(cmd == "exit"){
+    else if(strcmp(cmd, "exit") == 0){
       break;
     }
     else{
       std::cerr << "Error: Unknown command." << std::endl;
     }
 
-    skip_to_next_input();
   }
 
   return 0;

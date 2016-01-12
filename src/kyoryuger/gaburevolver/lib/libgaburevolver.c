@@ -1,9 +1,10 @@
 #include <wiringPi.h>
 #include <mcp23017.h>
 
+#include <toyhack.h>
+
 #include "../libgaburevolver.h"
 #include "../../judenchi.h"
-#include "../../../toyhack.h"
 
 
 /*
