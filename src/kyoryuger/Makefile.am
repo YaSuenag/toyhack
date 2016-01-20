@@ -1,1 +1,1 @@
-SUBDIRS = gaburevolver
+SUBDIRS = gaburevolver minityra

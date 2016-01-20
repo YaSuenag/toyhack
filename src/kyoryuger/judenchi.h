@@ -70,7 +70,7 @@ TJudenchi judenchi_list[] = {
                     {(const char *)"ｾﾞﾝｾﾝﾀｲ",                0x10}, // 0b010000
                     {(const char *)"ｵｰﾊﾞｰﾁｬｰｼﾞ",             0x21}, // 0b100001
                     {(const char *)"ｵｰﾊﾞｰﾁｬｰｼﾞ",             0x24}, // 0b100100
-                    {(const char *)"ｵｰﾊﾞｰﾁｬｰｼﾞ",             0x25}, // 0b100101
+                    {(const char *)"ｶｰﾆﾊﾞﾙﾞ",                0x25}, // 0b100101
                     {(const char *)"ﾜﾗｲｺﾞｴ",                 0x15}, // 0b010101
                     {(const char *)"ﾜﾗｲｺﾞｴ",                 0x35}, // 0b110101
                     {(const char *)"ﾜﾗｲｺﾞｴ",                 0x30}, // 0b110000

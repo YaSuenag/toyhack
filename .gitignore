@@ -1,8 +1,10 @@
 .deps/
 autom4te.cache/
 *.o
+*.a
 *.so
 gaburevolver_ctl
+minityra_ctl
 Makefile
 config.log
 config.status

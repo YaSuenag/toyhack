@@ -76,8 +76,8 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-bin_PROGRAMS = libgaburevolver.so$(EXEEXT)
-subdir = src/kyoryuger/gaburevolver/lib
+bin_PROGRAMS = libminityra.so$(EXEEXT)
+subdir = src/kyoryuger/minityra/lib
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/./m4/depcomp
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -89,12 +89,11 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_libgaburevolver_so_OBJECTS =  \
-	libgaburevolver_so-libgaburevolver.$(OBJEXT)
-libgaburevolver_so_OBJECTS = $(am_libgaburevolver_so_OBJECTS)
-libgaburevolver_so_LDADD = $(LDADD)
-libgaburevolver_so_LINK = $(CCLD) $(libgaburevolver_so_CFLAGS) \
-	$(CFLAGS) $(libgaburevolver_so_LDFLAGS) $(LDFLAGS) -o $@
+am_libminityra_so_OBJECTS = libminityra_so-libminityra.$(OBJEXT)
+libminityra_so_OBJECTS = $(am_libminityra_so_OBJECTS)
+libminityra_so_LDADD = $(LDADD)
+libminityra_so_LINK = $(CCLD) $(libminityra_so_CFLAGS) $(CFLAGS) \
+	$(libminityra_so_LDFLAGS) $(LDFLAGS) -o $@
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -127,8 +126,8 @@ AM_V_CCLD = $(am__v_CCLD_@AM_V@)
 am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
-SOURCES = $(libgaburevolver_so_SOURCES)
-DIST_SOURCES = $(libgaburevolver_so_SOURCES)
+SOURCES = $(libminityra_so_SOURCES)
+DIST_SOURCES = $(libminityra_so_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -246,10 +245,10 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-libgaburevolver_so_SOURCES = libgaburevolver.c
-libgaburevolver_so_CPPFLAGS = -I@WIRINGPI_DIR@ -I./../../../common
-libgaburevolver_so_CFLAGS = -Wall -fPIC
-libgaburevolver_so_LDFLAGS = -shared -lwiringPi
+libminityra_so_SOURCES = libminityra.c
+libminityra_so_CPPFLAGS = -I@WIRINGPI_DIR@ -I./../../../common
+libminityra_so_CFLAGS = -Wall -fPIC
+libminityra_so_LDFLAGS = -shared -lwiringPi
 all: all-am
 
 .SUFFIXES:
@@ -263,9 +262,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu src/kyoryuger/gaburevolver/lib/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu src/kyoryuger/minityra/lib/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu src/kyoryuger/gaburevolver/lib/Makefile
+	  $(AUTOMAKE) --gnu src/kyoryuger/minityra/lib/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -288,9 +287,9 @@ $(am__aclocal_m4_deps):
 clean-binPROGRAMS:
 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
 
-libgaburevolver.so$(EXEEXT): $(libgaburevolver_so_OBJECTS) $(libgaburevolver_so_DEPENDENCIES) $(EXTRA_libgaburevolver_so_DEPENDENCIES) 
-	@rm -f libgaburevolver.so$(EXEEXT)
-	$(AM_V_CCLD)$(libgaburevolver_so_LINK) $(libgaburevolver_so_OBJECTS) $(libgaburevolver_so_LDADD) $(LIBS)
+libminityra.so$(EXEEXT): $(libminityra_so_OBJECTS) $(libminityra_so_DEPENDENCIES) $(EXTRA_libminityra_so_DEPENDENCIES) 
+	@rm -f libminityra.so$(EXEEXT)
+	$(AM_V_CCLD)$(libminityra_so_LINK) $(libminityra_so_OBJECTS) $(libminityra_so_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -298,7 +297,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgaburevolver_so-libgaburevolver.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libminityra_so-libminityra.Po@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -316,19 +315,19 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(COMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
-libgaburevolver_so-libgaburevolver.o: libgaburevolver.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgaburevolver_so_CPPFLAGS) $(CPPFLAGS) $(libgaburevolver_so_CFLAGS) $(CFLAGS) -MT libgaburevolver_so-libgaburevolver.o -MD -MP -MF $(DEPDIR)/libgaburevolver_so-libgaburevolver.Tpo -c -o libgaburevolver_so-libgaburevolver.o `test -f 'libgaburevolver.c' || echo '$(srcdir)/'`libgaburevolver.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgaburevolver_so-libgaburevolver.Tpo $(DEPDIR)/libgaburevolver_so-libgaburevolver.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='libgaburevolver.c' object='libgaburevolver_so-libgaburevolver.o' libtool=no @AMDEPBACKSLASH@
+libminityra_so-libminityra.o: libminityra.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libminityra_so_CPPFLAGS) $(CPPFLAGS) $(libminityra_so_CFLAGS) $(CFLAGS) -MT libminityra_so-libminityra.o -MD -MP -MF $(DEPDIR)/libminityra_so-libminityra.Tpo -c -o libminityra_so-libminityra.o `test -f 'libminityra.c' || echo '$(srcdir)/'`libminityra.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libminityra_so-libminityra.Tpo $(DEPDIR)/libminityra_so-libminityra.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='libminityra.c' object='libminityra_so-libminityra.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgaburevolver_so_CPPFLAGS) $(CPPFLAGS) $(libgaburevolver_so_CFLAGS) $(CFLAGS) -c -o libgaburevolver_so-libgaburevolver.o `test -f 'libgaburevolver.c' || echo '$(srcdir)/'`libgaburevolver.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libminityra_so_CPPFLAGS) $(CPPFLAGS) $(libminityra_so_CFLAGS) $(CFLAGS) -c -o libminityra_so-libminityra.o `test -f 'libminityra.c' || echo '$(srcdir)/'`libminityra.c
 
-libgaburevolver_so-libgaburevolver.obj: libgaburevolver.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgaburevolver_so_CPPFLAGS) $(CPPFLAGS) $(libgaburevolver_so_CFLAGS) $(CFLAGS) -MT libgaburevolver_so-libgaburevolver.obj -MD -MP -MF $(DEPDIR)/libgaburevolver_so-libgaburevolver.Tpo -c -o libgaburevolver_so-libgaburevolver.obj `if test -f 'libgaburevolver.c'; then $(CYGPATH_W) 'libgaburevolver.c'; else $(CYGPATH_W) '$(srcdir)/libgaburevolver.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgaburevolver_so-libgaburevolver.Tpo $(DEPDIR)/libgaburevolver_so-libgaburevolver.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='libgaburevolver.c' object='libgaburevolver_so-libgaburevolver.obj' libtool=no @AMDEPBACKSLASH@
+libminityra_so-libminityra.obj: libminityra.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libminityra_so_CPPFLAGS) $(CPPFLAGS) $(libminityra_so_CFLAGS) $(CFLAGS) -MT libminityra_so-libminityra.obj -MD -MP -MF $(DEPDIR)/libminityra_so-libminityra.Tpo -c -o libminityra_so-libminityra.obj `if test -f 'libminityra.c'; then $(CYGPATH_W) 'libminityra.c'; else $(CYGPATH_W) '$(srcdir)/libminityra.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libminityra_so-libminityra.Tpo $(DEPDIR)/libminityra_so-libminityra.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='libminityra.c' object='libminityra_so-libminityra.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgaburevolver_so_CPPFLAGS) $(CPPFLAGS) $(libgaburevolver_so_CFLAGS) $(CFLAGS) -c -o libgaburevolver_so-libgaburevolver.obj `if test -f 'libgaburevolver.c'; then $(CYGPATH_W) 'libgaburevolver.c'; else $(CYGPATH_W) '$(srcdir)/libgaburevolver.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libminityra_so_CPPFLAGS) $(CPPFLAGS) $(libminityra_so_CFLAGS) $(CFLAGS) -c -o libminityra_so-libminityra.obj `if test -f 'libminityra.c'; then $(CYGPATH_W) 'libminityra.c'; else $(CYGPATH_W) '$(srcdir)/libminityra.c'; fi`
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique

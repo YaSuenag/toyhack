@@ -12,6 +12,7 @@ Raspberry Pi Type B
 # 対応する玩具
 ## 獣電戦隊キョウリュウジャー
 * [変身銃 ガブリボルバー](http://www.bandai.co.jp/catalog/item/4543112783615000.html)
+* [変形銃 ガブティラ・デ・カーニバル](http://www.bandai.co.jp/catalog/item/4543112815101000.html)
 
 # ビルド・インストール方法
 ```shell
@@ -20,6 +21,8 @@ $ make
 $ su -
 # make install
 ```
+
+Raspbian JessieではWiring Piがaptでインストール可能です。aptでインストールしている場合は ```--with-wiring-pi``` を付与する必要はありません。
 
 # 実行時の注意
 本ソースでビルドされるライブラリはデフォルトで```/usr/local/lib```にインストールされます。
