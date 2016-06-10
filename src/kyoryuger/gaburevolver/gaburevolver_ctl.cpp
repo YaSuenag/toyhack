@@ -6,7 +6,7 @@
 #include <console.hpp>
 #include <toyhack.h>
 
-#include "libgaburevolver.h"
+#include "lib/libgaburevolver.h"
 #include "../judenchi.h"
 
 

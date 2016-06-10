@@ -7,7 +7,7 @@
 #include <console.hpp>
 #include <toyhack.h>
 
-#include "libminityra.h"
+#include "lib/libminityra.h"
 #include "../judenchi.h"
 
 

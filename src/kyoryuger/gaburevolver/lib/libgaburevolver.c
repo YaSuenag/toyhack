@@ -3,7 +3,7 @@
 
 #include <toyhack.h>
 
-#include "../libgaburevolver.h"
+#include "libgaburevolver.h"
 #include "../../judenchi.h"
 
 

@@ -3,7 +3,7 @@
 
 #include <toyhack.h>
 
-#include "../libminityra.h"
+#include "libminityra.h"
 #include "../../judenchi.h"
 
 
