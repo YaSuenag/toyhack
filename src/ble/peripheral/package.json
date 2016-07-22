@@ -1,0 +1,15 @@
+{
+  "name": "bletest",
+  "version": "1.0.0",
+  "description": "Test program for BLE peripheral",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yasumasa Suenaga",
+  "license": "GPL-2.0",
+  "dependencies": {
+    "bleno": "^0.4.0",
+    "ffi": "~2.0.0"
+  }
+}
