@@ -2214,7 +2214,7 @@ ac_configure="$SHELL $ac_aux_dir/configure"  # Please don't use this var.
 
 
 
-am__api_version='1.15'
+am__api_version='1.14'
 
 # Find a good install program.  We prefer a C program (faster),
 # so one script is as good as another.  But avoid the broken or
@@ -2406,7 +2406,7 @@ else
 $as_echo "$as_me: WARNING: 'missing' script is too old or missing" >&2;}
 fi
 
-if test x"${install_sh+set}" != xset; then
+if test x"${install_sh}" != xset; then
   case $am_aux_dir in
   *\ * | *\	*)
     install_sh="\${SHELL} '$am_aux_dir/install-sh'" ;;
@@ -2734,8 +2734,8 @@ MAKEINFO=${MAKEINFO-"${am_missing_run}makeinfo"}
 # <http://lists.gnu.org/archive/html/automake/2012-07/msg00014.html>
 mkdir_p='$(MKDIR_P)'
 
-# We need awk for the "check" target (and possibly the TAP driver).  The
-# system "awk" is bad on some platforms.
+# We need awk for the "check" target.  The system "awk" is bad on
+# some platforms.
 # Always define AMTAR for backward compatibility.  Yes, it's still used
 # in the wild :-(  We should find a proper way to deprecate it ...
 AMTAR='$${TAR-tar}'
@@ -4780,7 +4780,8 @@ fi
 
 
 
-ac_config_files="$ac_config_files Makefile src/common/Makefile src/kyoryuger/Makefile src/kyoryuger/gaburevolver/Makefile src/kyoryuger/gaburevolver/lib/Makefile src/kyoryuger/minityra/Makefile src/kyoryuger/minityra/lib/Makefile"
+ac_config_files="$ac_config_files Makefile src/common/Makefile src/kyoryuger/Makefile src/kyoryuger/gaburevolver/Makefile src/kyoryuger/gaburevolver/lib/Makefile src/kyoryuger/minityra/Makefile src/kyoryuger/minityra/lib/Makefile src/yokai-watch/Makefile src/yokai-watch/dx/Makefile src/yokai-watch/dx/lib/Makefile"
+
 
 if test -n "$ac_tool_prefix"; then
   # Extract the first word of "${ac_tool_prefix}ranlib", so it can be a program name with args.
@@ -5627,6 +5628,9 @@ do
     "src/kyoryuger/gaburevolver/lib/Makefile") CONFIG_FILES="$CONFIG_FILES src/kyoryuger/gaburevolver/lib/Makefile" ;;
     "src/kyoryuger/minityra/Makefile") CONFIG_FILES="$CONFIG_FILES src/kyoryuger/minityra/Makefile" ;;
     "src/kyoryuger/minityra/lib/Makefile") CONFIG_FILES="$CONFIG_FILES src/kyoryuger/minityra/lib/Makefile" ;;
+    "src/yokai-watch/Makefile") CONFIG_FILES="$CONFIG_FILES src/yokai-watch/Makefile" ;;
+    "src/yokai-watch/dx/Makefile") CONFIG_FILES="$CONFIG_FILES src/yokai-watch/dx/Makefile" ;;
+    "src/yokai-watch/dx/lib/Makefile") CONFIG_FILES="$CONFIG_FILES src/yokai-watch/dx/lib/Makefile" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac

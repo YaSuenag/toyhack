@@ -27,12 +27,18 @@ AC_ARG_WITH([wiring-pi], AC_HELP_STRING([--with-wiring-pi@<:@=PATH@:>@],
                                                          [Path to WiringPi.]))
 
 
-AC_CONFIG_FILES([Makefile
-                 src/common/Makefile
-                 src/kyoryuger/Makefile
-                 src/kyoryuger/gaburevolver/Makefile
-                 src/kyoryuger/gaburevolver/lib/Makefile
-                 src/kyoryuger/minityra/Makefile
-                 src/kyoryuger/minityra/lib/Makefile])
+AC_CONFIG_FILES([
+  Makefile
+  src/common/Makefile
+  src/kyoryuger/Makefile
+  src/kyoryuger/gaburevolver/Makefile
+  src/kyoryuger/gaburevolver/lib/Makefile
+  src/kyoryuger/minityra/Makefile
+  src/kyoryuger/minityra/lib/Makefile
+  src/yokai-watch/Makefile
+  src/yokai-watch/dx/Makefile
+  src/yokai-watch/dx/lib/Makefile
+])
+
 AC_PROG_RANLIB
 AC_OUTPUT
