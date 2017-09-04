@@ -3,7 +3,7 @@
 #include <toyhack.h>
 
 #include "libyokai-watch.h"
-#include "../../yokai-medal.h"
+#include "../yokai-medal.h"
 
 
 /*

@@ -8,7 +8,14 @@
 #include <toyhack.h>
 
 #include "lib/libyokai-watch.h"
-#include "../yokai-medal.h"
+
+#ifdef DX
+#define MODEL_NAME "DX"
+#define PROMPT "yokai-dx> "
+#include "yokai-medal.h"
+#else
+#error "Model name must be set"
+#endif
 
 
 TCommandDescription cmd_descriptions[] = {
@@ -54,12 +61,12 @@ int main(int argc, char *argv[]){
 
   TConsole console(cmd_descriptions);
 
-  std::cout << "Yokai Watch DX management console" << std::endl;
+  std::cout << "Yokai Watch " MODEL_NAME " management console" << std::endl;
   std::cout << "Copyright (C) 2017 Yasumasa Suenaga" << std::endl;
   std::cout << std::endl;
 
   while(true){
-    const char *cmd = console.GetCommand("yokai-dx> ");
+    const char *cmd = console.GetCommand(PROMPT);
 
     if(strcmp(cmd, "help") == 0){
       console.PrintHelp();
