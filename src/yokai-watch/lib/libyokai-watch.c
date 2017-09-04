@@ -3,7 +3,6 @@
 #include <toyhack.h>
 
 #include "libyokai-watch.h"
-#include "../yokai-medal.h"
 
 
 /*
@@ -92,7 +91,7 @@ int EjectMedal(void){
   return result;
 }
 
-int SetMedal(int id){
+int SetMedal(int pattern){
   int result = TOYHACK_SUCCEEDED;
 
   if(current_medal_pattern != -1){
@@ -103,8 +102,8 @@ int SetMedal(int id){
     delay(500);
   }
 
-  result = DigitalOut(medal_list[id].pattern, 0);
-  current_medal_pattern = medal_list[id].pattern;
+  result = DigitalOut(pattern, 0);
+  current_medal_pattern = pattern;
 
   return result;
 }

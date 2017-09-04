@@ -13,6 +13,10 @@
 #define MODEL_NAME "DX"
 #define PROMPT "yokai-dx> "
 #include "yokai-medal.h"
+#elif defined ZERO
+#define MODEL_NAME "ZERO"
+#define PROMPT "yokai-zero> "
+#include "yokai-medal-zero.h"
 #else
 #error "Model name must be set"
 #endif
@@ -82,7 +86,7 @@ int main(int argc, char *argv[]){
       print_medal("Medal", id);
 
 #ifndef CONSOLE_TEST
-      if(SetMedal(id) != TOYHACK_SUCCEEDED){
+      if(SetMedal(medal_list[id].pattern) != TOYHACK_SUCCEEDED){
         std::cerr << "Cannot set Yokai Medal." << std::endl;
       }
 #endif

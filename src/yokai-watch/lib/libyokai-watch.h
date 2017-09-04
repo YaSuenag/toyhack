@@ -7,7 +7,7 @@ extern "C"{
 #endif
   extern int SetupGPIO(void);
   extern int EjectMedal(void);
-  extern int SetMedal(int id);
+  extern int SetMedal(int pattern);
 #ifdef __cplusplus
 }
 #endif

@@ -1,10 +1,7 @@
 #ifndef YOKAI_MEDAL_H
 #define YOKAI_MEDAL_H
 
-typedef struct{
-  const char *name;
-  unsigned short pattern;
-} TMedal;
+#include "yokai-medal-common.h"
 
 
 /*
