@@ -36,8 +36,7 @@ AC_CONFIG_FILES([
   src/kyoryuger/minityra/Makefile
   src/kyoryuger/minityra/lib/Makefile
   src/yokai-watch/Makefile
-  src/yokai-watch/dx/Makefile
-  src/yokai-watch/dx/lib/Makefile
+  src/yokai-watch/lib/Makefile
 ])
 
 AC_PROG_RANLIB

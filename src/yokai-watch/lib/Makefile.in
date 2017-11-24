@@ -77,7 +77,7 @@ NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
 bin_PROGRAMS = libyokai-watch.so$(EXEEXT)
-subdir = src/yokai-watch/dx/lib
+subdir = src/yokai-watch/lib
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/./m4/depcomp
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -247,7 +247,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 libyokai_watch_so_SOURCES = libyokai-watch.c
-libyokai_watch_so_CPPFLAGS = -I@WIRINGPI_DIR@ -I./../../../common
+libyokai_watch_so_CPPFLAGS = -I@WIRINGPI_DIR@ -I../../common
 libyokai_watch_so_CFLAGS = -Wall -fPIC
 libyokai_watch_so_LDFLAGS = -shared -lwiringPi
 all: all-am
@@ -263,9 +263,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu src/yokai-watch/dx/lib/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu src/yokai-watch/lib/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu src/yokai-watch/dx/lib/Makefile
+	  $(AUTOMAKE) --gnu src/yokai-watch/lib/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \

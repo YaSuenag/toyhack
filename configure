@@ -4780,7 +4780,7 @@ fi
 
 
 
-ac_config_files="$ac_config_files Makefile src/common/Makefile src/kyoryuger/Makefile src/kyoryuger/gaburevolver/Makefile src/kyoryuger/gaburevolver/lib/Makefile src/kyoryuger/minityra/Makefile src/kyoryuger/minityra/lib/Makefile src/yokai-watch/Makefile src/yokai-watch/dx/Makefile src/yokai-watch/dx/lib/Makefile"
+ac_config_files="$ac_config_files Makefile src/common/Makefile src/kyoryuger/Makefile src/kyoryuger/gaburevolver/Makefile src/kyoryuger/gaburevolver/lib/Makefile src/kyoryuger/minityra/Makefile src/kyoryuger/minityra/lib/Makefile src/yokai-watch/Makefile src/yokai-watch/lib/Makefile"
 
 
 if test -n "$ac_tool_prefix"; then
@@ -5629,8 +5629,7 @@ do
     "src/kyoryuger/minityra/Makefile") CONFIG_FILES="$CONFIG_FILES src/kyoryuger/minityra/Makefile" ;;
     "src/kyoryuger/minityra/lib/Makefile") CONFIG_FILES="$CONFIG_FILES src/kyoryuger/minityra/lib/Makefile" ;;
     "src/yokai-watch/Makefile") CONFIG_FILES="$CONFIG_FILES src/yokai-watch/Makefile" ;;
-    "src/yokai-watch/dx/Makefile") CONFIG_FILES="$CONFIG_FILES src/yokai-watch/dx/Makefile" ;;
-    "src/yokai-watch/dx/lib/Makefile") CONFIG_FILES="$CONFIG_FILES src/yokai-watch/dx/lib/Makefile" ;;
+    "src/yokai-watch/lib/Makefile") CONFIG_FILES="$CONFIG_FILES src/yokai-watch/lib/Makefile" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac
