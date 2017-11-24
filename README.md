@@ -20,6 +20,7 @@ ToyHackは、子供向け玩具の基盤に含まれる各種アクション（�
     * [変形銃 ガブティラ・デ・カーニバル](http://www.bandai.co.jp/catalog/item/4543112815101000.html)
 * 妖怪ウォッチ
     * [DX妖怪ウォッチ](http://yw.b-boys.jp/member/products/watch/)
+    * [DX妖怪ウォッチ タイプ零式](http://yw.b-boys.jp/member/products/watch2/)
 
 # ビルド・インストール方法
 
