@@ -5,6 +5,7 @@ autom4te.cache/
 *.so
 gaburevolver_ctl
 minityra_ctl
+yokai-watch_ctl
 Makefile
 config.log
 config.status
