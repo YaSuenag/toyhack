@@ -1,5 +1,6 @@
 var bleno = require('bleno');
 var ToyHackService = require('./toyhack-service');
+var GaburevolverService = require('./gaburevolver');
 var MinityraService = require('./minityra');
 
 var toyhackService = null;
@@ -8,6 +9,9 @@ var libname = process.argv[2];
 if(libname === undefined){
   console.error('Module name is required.');
   process.exit(-1);
+}
+else if(libname.endsWith('/libgaburevolver.so')){
+  toyhackService = new GaburevolverService(libname);
 }
 else if(libname.endsWith('/libminityra.so')){
   toyhackService = new MinityraService(libname);
