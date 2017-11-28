@@ -2,6 +2,7 @@ var bleno = require('bleno');
 var ToyHackService = require('./toyhack-service');
 var GaburevolverService = require('./gaburevolver');
 var MinityraService = require('./minityra');
+var MinityraService = require('./yokai-watch');
 
 var toyhackService = null;
 var libname = process.argv[2];
@@ -15,6 +16,9 @@ else if(libname.endsWith('/libgaburevolver.so')){
 }
 else if(libname.endsWith('/libminityra.so')){
   toyhackService = new MinityraService(libname);
+}
+else if(libname.endsWith('/libyokai-watch.so')){
+  toyhackService = new YokaiWatchService(libname);
 }
 else{
   console.error(libname + ' is not supported.');
