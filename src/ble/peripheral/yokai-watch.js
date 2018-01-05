@@ -48,7 +48,7 @@ SetMedal.prototype.onWriteRequest =
     callback(this.RESULT_INVALID_ATTRIBUTE_LENGTH);
   }
   else{
-    var pattern = data.readUInt8(0);
+    var pattern = data.readUInt16BE(0);
     this.watch.SetMedal(pattern);
   }
 
@@ -96,4 +96,4 @@ YokaiWatchService.prototype.getModuleName = function(){
   return 'Yokai Watch';
 };
 
-module.exports = MinityraService;
+module.exports = YokaiWatchService;
