@@ -2,7 +2,7 @@ var bleno = require('bleno');
 var ToyHackService = require('./toyhack-service');
 var GaburevolverService = require('./gaburevolver');
 var MinityraService = require('./minityra');
-var MinityraService = require('./yokai-watch');
+var YokaiWatchService = require('./yokai-watch');
 
 var toyhackService = null;
 var libname = process.argv[2];
