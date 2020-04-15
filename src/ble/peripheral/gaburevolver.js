@@ -171,12 +171,12 @@ SetJudenchi.prototype.onWriteRequest =
   if(offset){
     callback(this.RESULT_ATTR_NOT_LONG);
   }
-  else if(data.length != 1){
+  else if(data.length != 2){
     callback(this.RESULT_INVALID_ATTRIBUTE_LENGTH);
   }
   else{
     var lower_sw = data.readUInt8(0);
-    var upper_sw = data.readUInt8(0);
+    var upper_sw = data.readUInt8(1);
     this.gaburevolver.SetJudenchi(lower_sw, upper_sw);
   }
 
