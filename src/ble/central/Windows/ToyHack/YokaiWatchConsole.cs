@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace ToyHack
 {
@@ -48,11 +49,25 @@ namespace ToyHack
         {
             if(medalList.SelectedItems.Count == 1)
             {
-                BLE.WriteUShortAsBE(Convert.ToUInt16(medalList.SelectedItems[0].SubItems[1].Text), ToyHackBLE.SetMedalUUID);
+                BLE.WriteUShortAsBE(Convert.ToUInt16(medalList.SelectedItems[0].SubItems[1].Text), YokaiWatchUUIDs.SetMedal);
             }
             else
             {
-                BLE.WriteUByte(0, ToyHackBLE.EjectMedalUUID);
+                BLE.WriteUByte(0, YokaiWatchUUIDs.EjectMedal);
+            }
+        }
+
+        private void imageLoadMenu_Click(object sender, EventArgs e)
+        {
+            if(folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                medalImageList.Images.Clear();
+                foreach(var filename in Directory.GetFiles(folderBrowserDialog1.SelectedPath))
+                {
+                    var basename = Path.GetFileNameWithoutExtension(filename);
+                    var image = Image.FromFile(filename);
+                    medalImageList.Images.Add(basename, image);
+                }
             }
         }
     }

@@ -10,6 +10,38 @@ using System.Collections.Generic;
 
 namespace ToyHack
 {
+    public struct YokaiWatchUUIDs
+    {
+        public static Guid Service => new Guid("f1205471f8cd466ca9a8a4e377044000");
+        public static Guid SetMedal => new Guid("f1205471f8cd466ca9a8a4e377044001");
+        public static Guid EjectMedal => new Guid("f1205471f8cd466ca9a8a4e377044002");
+    }
+
+    public struct GaburevolverUUIDs
+    {
+        public static Guid Service => new Guid("0bd173ff1029456d9df38c58a2962000");
+        public static Guid OpenSetter => new Guid("0bd173ff1029456d9df38c58a2962001");
+        public static Guid SetJudenchi => new Guid("0bd173ff1029456d9df38c58a2962002");
+        public static Guid CloseSetter => new Guid("0bd173ff1029456d9df38c58a2962003");
+        public static Guid Rotate => new Guid("0bd173ff1029456d9df38c58a2962004");
+        public static Guid Trigger => new Guid("0bd173ff1029456d9df38c58a2962005");
+        public static Guid DockMinityra => new Guid("0bd173ff1029456d9df38c58a2962006");
+        public static Guid UndockMinityra => new Guid("0bd173ff1029456d9df38c58a2962007");
+        public static Guid DockGaburicalibur => new Guid("0bd173ff1029456d9df38c58a2962008");
+        public static Guid UndockGaburicalibur => new Guid("0bd173ff1029456d9df38c58a2962009");
+    }
+
+    public struct MinityraUUIDs
+    {
+        public static Guid Service => new Guid("b73244fb2df84cd583300f6b70d68000");
+        public static Guid SetJudenchi => new Guid("b73244fb2df84cd583300f6b70d68001");
+        public static Guid Gabu => new Guid("b73244fb2df84cd583300f6b70d68002");
+        public static Guid Kururincho => new Guid("b73244fb2df84cd583300f6b70d68003");
+        public static Guid Dock => new Guid("b73244fb2df84cd583300f6b70d68004");
+        public static Guid Trigger => new Guid("b73244fb2df84cd583300f6b70d68005");
+        public static Guid SideSwitch => new Guid("b73244fb2df84cd583300f6b70d68006");
+    }
+
     public class ToyHackBLE : IDisposable
     {
         public static Guid AdvertiseUUID => new Guid("36b50eb130c741a487a8b250e30fb15d");
@@ -17,10 +49,6 @@ namespace ToyHack
 
         public static Guid ModuleNameUUID => new Guid("36b50eb130c741a487a8b250e30fc001");
         public static Guid LibraryNameUUID => new Guid("36b50eb130c741a487a8b250e30fc002");
-
-        public static Guid YokaiWatchServiceUUID => new Guid("f1205471f8cd466ca9a8a4e377044000");
-        public static Guid SetMedalUUID => new Guid("f1205471f8cd466ca9a8a4e377044001");
-        public static Guid EjectMedalUUID => new Guid("f1205471f8cd466ca9a8a4e377044002");
 
         private BluetoothLEDevice device;
 
@@ -70,27 +98,25 @@ namespace ToyHack
             switch (_moduleName)
             {
                 case "Gaburevolver":
-                    // TODO
+                    ToyHackService = (await device.GetGattServicesForUuidAsync(GaburevolverUUIDs.Service)).Services.First();
                     break;
                 case "Minityra":
-                    // TODO
+                    ToyHackService = (await device.GetGattServicesForUuidAsync(MinityraUUIDs.Service)).Services.First();
                     break;
                 case "Yokai Watch":
-                    ToyHackService = (await device.GetGattServicesForUuidAsync(YokaiWatchServiceUUID)).Services.First();
-                    ToyHackCharacteristics = (await ToyHackService.GetCharacteristicsAsync()).Characteristics;
+                    ToyHackService = (await device.GetGattServicesForUuidAsync(YokaiWatchUUIDs.Service)).Services.First();
                     break;
             }
+            ToyHackCharacteristics = (await ToyHackService.GetCharacteristicsAsync()).Characteristics;
         }
 
-        public async void WriteUByte(byte value, Guid characteristicGuid)
+        public void WriteUByte(byte value, Guid characteristicGuid)
         {
-            var characteristic = ToyHackCharacteristics.Where(c => c.Uuid == characteristicGuid)
-                                                       .First();
             var array = BitConverter.GetBytes(value);
-            await characteristic.WriteValueAsync(array.AsBuffer(), GattWriteOption.WriteWithoutResponse);
+            WriteBytes(array, characteristicGuid);
         }
 
-        public async void WriteUShortAsBE(ushort value, Guid characteristicGuid)
+        public void WriteUShortAsBE(ushort value, Guid characteristicGuid)
         {
             var array = BitConverter.GetBytes(value);
             if (BitConverter.IsLittleEndian)
@@ -99,6 +125,11 @@ namespace ToyHack
                 Array.Reverse(array);
             }
 
+            WriteBytes(array, characteristicGuid);
+        }
+
+        public async void WriteBytes(byte[] array, Guid characteristicGuid)
+        {
             var characteristic = ToyHackCharacteristics.Where(c => c.Uuid == characteristicGuid)
                                                        .First();
             await characteristic.WriteValueAsync(array.AsBuffer(), GattWriteOption.WriteWithoutResponse);

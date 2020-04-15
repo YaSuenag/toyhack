@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.Immutable;
 
 namespace ToyHack
 {
@@ -23,8 +24,7 @@ namespace ToyHack
         }
 
         // $ grep 'const char' yokai-medal.h | sed -e 's/^.\+\(".\+"\), \(0x[0-9a-f]\+\).\+$/new YokaiMedal(\1, \2, MedalCategory.Normal),/g'
-        public static readonly HashSet<YokaiMedal> MEDALS = new HashSet<YokaiMedal>()
-        {
+        public static readonly ImmutableHashSet<YokaiMedal> MEDALS = ImmutableHashSet.Create(
             new YokaiMedal("ぶようじん坊", 0x94ea, MedalCategory.Normal),
             new YokaiMedal("がらあきん坊", 0x94fa, MedalCategory.Normal),
             new YokaiMedal("さきがけの助", 0x961a, MedalCategory.Normal),
@@ -444,7 +444,7 @@ namespace ToyHack
             new YokaiMedal("ざしきわらし怪", 0xf5ca, MedalCategory.Z),
             new YokaiMedal("えんらえんら怪", 0xf5da, MedalCategory.Z),
             new YokaiMedal("ロボコマ おどろきずらモンゲー", 0xf5ea, MedalCategory.Z)
-        };
+        );
     }
 
 }

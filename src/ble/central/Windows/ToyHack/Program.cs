@@ -27,7 +27,26 @@ namespace ToyHack
                 ble = adv.BLE;
             }
 
-            Application.Run(new YokaiWatchConsole(ble));
+            Form mainForm = null;
+            switch (ble.ModuleName)
+            {
+                case "Gaburevolver":
+                    mainForm = new GaburevolverConsole(ble);
+                    break;
+
+                case "Minityra":
+                    mainForm = new MinityraConsole(ble);
+                    break;
+
+                case "Yokai Watch":
+                    mainForm = new YokaiWatchConsole(ble);
+                    break;
+
+                default:
+                    MessageBox.Show("未対応のサービス（" + ble.ModuleName + "）", "ToyHack", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+            }
+            Application.Run(mainForm);
         }
     }
 }

@@ -34,6 +34,9 @@
             this.normalMedalMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.zMedalMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.medalImageList = new System.Windows.Forms.ImageList(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.imageLoadMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.medalCategoryMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,29 +58,47 @@
             // 
             this.medalCategoryMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.normalMedalMenu,
-            this.zMedalMenu});
+            this.zMedalMenu,
+            this.toolStripMenuItem1,
+            this.imageLoadMenu});
             this.medalCategoryMenu.Name = "medalCategoryMenu";
-            this.medalCategoryMenu.Size = new System.Drawing.Size(137, 48);
+            this.medalCategoryMenu.Size = new System.Drawing.Size(145, 76);
             // 
             // normalMedalMenu
             // 
             this.normalMedalMenu.Name = "normalMedalMenu";
-            this.normalMedalMenu.Size = new System.Drawing.Size(136, 22);
+            this.normalMedalMenu.Size = new System.Drawing.Size(180, 22);
             this.normalMedalMenu.Text = "ノーマルメダル";
             this.normalMedalMenu.Click += new System.EventHandler(this.normalMedalMenu_Click);
             // 
             // zMedalMenu
             // 
             this.zMedalMenu.Name = "zMedalMenu";
-            this.zMedalMenu.Size = new System.Drawing.Size(136, 22);
+            this.zMedalMenu.Size = new System.Drawing.Size(180, 22);
             this.zMedalMenu.Text = "Zメダル";
             this.zMedalMenu.Click += new System.EventHandler(this.zMedalMenu_Click);
             // 
             // medalImageList
             // 
-            this.medalImageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.medalImageList.ImageSize = new System.Drawing.Size(16, 16);
+            this.medalImageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.medalImageList.ImageSize = new System.Drawing.Size(64, 64);
             this.medalImageList.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // imageLoadMenu
+            // 
+            this.imageLoadMenu.Name = "imageLoadMenu";
+            this.imageLoadMenu.Size = new System.Drawing.Size(180, 22);
+            this.imageLoadMenu.Text = "画像読み込み";
+            this.imageLoadMenu.Click += new System.EventHandler(this.imageLoadMenu_Click);
+            // 
+            // folderBrowserDialog1
+            // 
+            this.folderBrowserDialog1.ShowNewFolderButton = false;
             // 
             // YokaiWatchConsole
             // 
@@ -100,5 +121,8 @@
         private System.Windows.Forms.ToolStripMenuItem normalMedalMenu;
         private System.Windows.Forms.ToolStripMenuItem zMedalMenu;
         private System.Windows.Forms.ImageList medalImageList;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem imageLoadMenu;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }
