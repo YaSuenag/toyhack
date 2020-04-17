@@ -38,6 +38,26 @@ Raspbian JessieではWiring Piが `apt` でインストール可能です。 `ap
 本ソースでビルドされるライブラリはデフォルトで `/usr/local/lib` にインストールされます。
 一部のLinuxディストリビューションはライブラリパスに `/usr/local/lib` が含まれていないため、実行時に動的リンカエラーが発生することがあります。その場合は `ld.so.conf` または `LD_LIBRARY_PATH` を設定し、依存ライブラリが解決可能な状態になるようにしてください。
 
+# BLEによるコントロール
+
+## ペリフェラル（BLEプロキシ）
+
+`src/ble/peripheral` 配下の `index.js` を `node.js` で動作させると、ToyHackによるおもちゃのコントロールをBLE通信で行えるようになります。
+
+```
+$ cd src/ble/peripheral
+$ npm install
+# node index.js [各おもちゃ毎のライブラリ]
+```
+
+BLEプロキシでは [bleno](https://github.com/sandeepmistry/bleno) を使ってBLE通信を行っています。  
+blenoを使う関係上、 `bluetoothd` は停止させ、Bluetoothデバイスは動作させておく必要があります。
+
+```
+# systemctl stop bluetooth.service
+# hciconfig hci0 up
+```
+
 # License
 
 GNU General Public License v2
