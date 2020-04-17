@@ -47,7 +47,7 @@ Raspbian JessieではWiring Piが `apt` でインストール可能です。 `ap
 ```
 $ cd src/ble/peripheral
 $ npm install
-# node index.js path/to/toyhack-library.so
+# node index.js [各おもちゃ毎のライブラリ]
 ```
 
 BLEプロキシでは [bleno](https://github.com/sandeepmistry/bleno) を使ってBLE通信を行っています。  
