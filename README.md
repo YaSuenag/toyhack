@@ -58,6 +58,12 @@ blenoを使う関係上、 `bluetoothd` は停止させ、Bluetoothデバイス�
 # hciconfig hci0 up
 ```
 
+## セントラル（ToyHack Win）
+
+`src/ble/central/Windows` 配下に Visual Studio 2019 で作成したBLEプロキシ向けセントラルのWindows Formアプリケーションのソースコードがあります。これをビルドし実行すると、自動でBLEプロキシが発するアドバタイズを検出し、最適なおもちゃのコントロール画面を出力します。
+
+妖怪ウォッチの場合は、画面で右クリックするとノーマルメダルかZメダルかを切り替えることができます。さらに、画像読み込みメニューでメダル画像の入ったディレクトリを選択すると、妖怪のラージアイコンを表示することも可能です。なお、ファイル名は [YokaiMedal.cs](/src/ble/central/Windows/ToyHack/YokaiMedal.cs) の `MEDALS` に格納している名前と一致している必要があります（これが画像一致のキーになっています）。
+
 # License
 
 GNU General Public License v2
