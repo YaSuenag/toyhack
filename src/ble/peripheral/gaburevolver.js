@@ -314,7 +314,7 @@ function GaburevolverService(libname){
       new Trigger(this.libgaburevolver),
       new DockMinityra(this.libgaburevolver),
       new UndockMinityra(this.libgaburevolver),
-      new DockGaburicaribur(this.libgaburevolver),
+      new DockGaburicalibur(this.libgaburevolver),
       new UndockGaburicalibur(this.libgaburevolver)
     ]
   });
