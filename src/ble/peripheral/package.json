@@ -1,5 +1,5 @@
 {
-  "name": "ToyHack BLE proxy",
+  "name": "toyhack-ble-proxy",
   "version": "1.0.0",
   "description": "BLE peripheral for ToyHack",
   "main": "index.js",
